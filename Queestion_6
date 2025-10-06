@@ -1,0 +1,47 @@
+//Q6. The Treasure Island
+//Each island grid has gold. Find the island row with maximum gold.
+//Input:
+//3 3
+//1 2 3
+//4 5 6
+//7 8 9
+//● Output: Row 2 (sum=24)
+
+//CODE
+import java.util.Scanner;
+
+public class Treasure_land {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       
+        int r = sc.nextInt();
+        int c= sc.nextInt();
+        int[][] gold = new int[r][c];
+
+        
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                gold[i][j] = sc.nextInt();
+            }
+        }
+
+        int maxSum = 0;
+        int maxRow = -1;
+
+       
+        for (int i = 0; i < r; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < c; j++) {
+                rowSum += gold[i][j];
+            }
+
+            if (rowSum > maxSum) {
+                maxSum = rowSum;
+                maxRow = i;
+            }
+        }
+
+        System.out.println("Row " + maxRow + " (sum=" + maxSum + ")");
+        sc.close();
+    }
+}
