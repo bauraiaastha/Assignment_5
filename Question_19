@@ -1,0 +1,35 @@
+//Q19. The Archer’s Range
+//Find the first occurrence of an arrow’s distance.
+//● Input: arr=[1,2,2,2,3], key=2
+//● Output: 1
+
+//CODE
+public class ArchersRange {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 2, 3};
+        int key = 2;
+
+        int index = firstOccurrenceBinary(arr, key);
+        System.out.println(index);
+    }
+
+    public static int firstOccurrenceBinary(int[] arr, int key) {
+        int left = 0, right = arr.length - 1;
+        int result = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == key) {
+                result = mid;        // potential first occurrence
+                right = mid - 1;     // search left half
+            } else if (arr[mid] < key) {
+                left = mid + 1;      // search right half
+            } else {
+                right = mid - 1;     // search left half
+            }
+        }
+
+        return result;
+    }
+}
